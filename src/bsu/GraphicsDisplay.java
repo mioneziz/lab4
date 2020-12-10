@@ -191,19 +191,24 @@ minY
 и угла прямоугольника, в который он вписан */
 // Центр - в точке (x,y)
             Point2D.Double center = xyToPoint(point[0], point[1]);
-            GeneralPath star = new GeneralPath();
+            GeneralPath triangle = new GeneralPath();
             java.awt.geom.Point2D.Double cent = this.xyToPoint(point[0], point[1]);
-            star.moveTo(cent.getX(), cent.getY());
-            star.moveTo(star.getCurrentPoint().getX() + 5.0D, star.getCurrentPoint().getY() + 5.0D);
-            star.lineTo(star.getCurrentPoint().getX() - 10.0D, star.getCurrentPoint().getY());
-            star.moveTo(center.getX(), center.getY());
+            triangle.moveTo(cent.getX(), cent.getY());
+            triangle.moveTo(triangle.getCurrentPoint().getX() + 5.0D, triangle.getCurrentPoint().getY() + 5.0D);
+            triangle.lineTo(triangle.getCurrentPoint().getX() - 10.0D, triangle.getCurrentPoint().getY());
+            triangle.moveTo(center.getX(), center.getY());
+            triangle.moveTo(triangle.getCurrentPoint().getX(), triangle.getCurrentPoint().getY() - 5.0D);
+            triangle.lineTo(triangle.getCurrentPoint().getX() - 5.0D, triangle.getCurrentPoint().getY()+10.0D);
+            triangle.moveTo(center.getX(), center.getY());
+            triangle.moveTo(triangle.getCurrentPoint().getX(), triangle.getCurrentPoint().getY() - 5.0D);
+            triangle.lineTo(triangle.getCurrentPoint().getX() + 5.0D, triangle.getCurrentPoint().getY()+10.0D);
 
 // Угол прямоугольника - отстоит на расстоянии (3,3)
             Point2D.Double corner = shiftPoint(center, 3, 3);
 // Задать эллипс по центру и диагонали
             marker.setFrameFromCenter(center, corner);
-            canvas.draw(marker); // Начертить контур маркера
-            canvas.fill(marker); // Залить внутреннюю область маркера
+            canvas.draw(triangle); // Начертить контур маркера
+            canvas.fill(triangle); // Залить внутреннюю область маркера
         }
     }
     // Метод, обеспечивающий отображение осей координат
