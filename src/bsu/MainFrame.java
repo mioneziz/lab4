@@ -129,16 +129,18 @@ Double.SIZE/8 байт;
         }
 // Шаг 5 - Закрыть входной поток
         in.close();
-        } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex)
+            {
 // В случае исключительной ситуации типа "Файл не найден" показать сообщение об ошибке
         JOptionPane.showMessageDialog(MainFrame.this, "Указанный файл не найден", "Ошибка загрузки данных", JOptionPane.WARNING_MESSAGE);
         return;
-        } catch (IOException ex) {
+            }
+        catch (IOException ex) {
 // В случае ошибки ввода из файлового потока показать сообщение об ошибке
         JOptionPane.showMessageDialog(MainFrame.this, "Ошибка чтения координат точек из файла", "Ошибка загрузки данных",
         JOptionPane.WARNING_MESSAGE);
         return;
-        }
+         }
         }
 public static void main(String[] args) {
 // Создать и показать экземпляр главного окна приложения
